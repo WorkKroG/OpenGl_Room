@@ -59,7 +59,7 @@ def draw_directional_light():
     glLoadIdentity()
     glRotate(directionalAngleY, 0, 1, 0)
     glRotate(directionalAngleX, 1, 0, 0)
-    glLight(GL_LIGHT1, GL_POSITION, (0, 0, 1, 0))
+    glLight(GL_LIGHT1, GL_POSITION, (0, 0, 1, 1))
     glLight(GL_LIGHT1, GL_DIFFUSE, (1, 1, 1, 1))
     glLight(GL_LIGHT1, GL_SPECULAR, (1, 1, 1, 1))
     glPopMatrix()
@@ -116,7 +116,7 @@ def draw():
     glutSolidCube(1)
 
     draw_directional_light()
-    draw_positional_light()
+    # draw_positional_light()
 
     glutSwapBuffers()  # Выводим все нарисованное в памяти на экран
 

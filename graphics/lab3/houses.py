@@ -9,6 +9,8 @@ import math
 global xRot  # Величина вращения по оси x
 global zPos  # Величина вращения по оси y
 a = 0.5
+xrot = 0.0  # Величина вращения по оси x = 0
+yrot = 0.0  # Величина вращения по оси y = 0
 
 
 # Процедура инициализации
@@ -24,12 +26,12 @@ def init():
     glMatrixMode(GL_MODELVIEW)
 
 
-#  glRotatef(-90, 1.0, 0.0, 0.0)                   # Сместимся по оси Х на 90 градусов
+    #glRotatef(-30, 1.0, 0.0, 0.0)                   # Сместимся по оси Х на 90 градусов
 
 # Процедура обработки специальных клавиш
 def specialkeys(key, x, y):
-    global xRot
-    global zPos
+    global xrot
+    global yrot
 
     # Обработчики для клавиш со стрелками
     if key == GLUT_KEY_UP:  # Клавиша вверх
@@ -50,8 +52,8 @@ def restore_matrix():
 
 
 def get_triangle_height() -> float:
-    hypo = math.sqrt(2 * a**2)
-    return hypo / 2
+    hypo = math.sqrt(2 * a**4)
+    return hypo
 
 
 def draw_house():
@@ -61,17 +63,17 @@ def draw_house():
     glRotatef(180, 0, 0, 1)
 
     glBegin(GL_POLYGON)
-    glVertex3f(0, 0, 0)
-    glVertex3f(0, a, 0)
     glVertex3f(a, 0, 0)
+    glVertex3f(0, a, 0)
+    glVertex3f(0, 0, 0)
     glEnd()
 
     restore_matrix()
 
     glBegin(GL_POLYGON)
-    glVertex3f(0, 0, 0)
-    glVertex3f(0, a, 0)
     glVertex3f(a, 0, 0)
+    glVertex3f(0, a, 0)
+    glVertex3f(0, 0, 0)
     glEnd()
 
     restore_matrix()
@@ -80,9 +82,9 @@ def draw_house():
     glRotatef(-135, 0, 0, 1)
 
     glBegin(GL_POLYGON)
-    glVertex3f(0, 0, 0)
-    glVertex3f(0, a, 0)
     glVertex3f(a, 0, 0)
+    glVertex3f(0, a, 0)
+    glVertex3f(0, 0, 0)
     glEnd()
 
     glPopMatrix()
@@ -95,18 +97,28 @@ def draw():
 
     glTranslate(1, 0, 0)
     glScalef(1.2, 1.2, 0)
+    glRotatef(180, 0, 0, 1)
+    glTranslate(0, -0.8, 0)
+    glTranslate(-0.5, 0, 0)
+
+    # glRotate(xrot, 0, 0, 1)
+    # glTranslate(0.5, 0, 2)
+
     draw_house()
 
     glLoadIdentity()
+    glRotatef(90, 0, 0, 1)
+    glTranslate(0, -0.5, 0)
     draw_house()
 
     glLoadIdentity()
     glTranslate(-1, 0, 0)
     glScalef(0.6, 0.6, 0)
+
     draw_house()
 
-    glutSwapBuffers()  # Выводим все нарисованное в памяти на экран
 
+    glutSwapBuffers()  # Выводим все нарисованное в памяти на экран
 
 # Использовать двойную буферизацию и цвета в формате RGB (Красный, Зеленый, Синий)
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB)

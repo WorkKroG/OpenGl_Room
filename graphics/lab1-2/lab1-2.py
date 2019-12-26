@@ -136,13 +136,6 @@ def btn_release(event):
              "id": 0}
     models.append(primitiv)
     reDrawAll()
-    #
-    # if shape_type == "line":
-    #     shape = canvas.create_line(x, y, xx, yy, fill=color, smooth=1, width=2)
-    # elif shape_type == "rect":
-    #     shape = canvas.create_rectangle(x, y, xx, yy, fill=color, stipple='gray25')
-    # elif shape_type == "circle":
-    #     shape = canvas.create_oval(x, y, xx, yy, fill=color, stipple='gray12')
 
     should_draw = False
 

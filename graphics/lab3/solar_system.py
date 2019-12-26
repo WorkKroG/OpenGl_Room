@@ -72,7 +72,7 @@ def draw_moon():
 
     glScalef(0.2, 0.2, 0.2)
     glColor(convert_colors(230, 230, 230))
-    glRotatef(-angle * 4, 0, 0, 1)
+    glRotatef(-angle * 2, 0, 0, 1)
     glTranslatef(8, 0, 0)
     draw_circle()
 
